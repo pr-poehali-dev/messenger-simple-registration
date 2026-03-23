@@ -9,17 +9,29 @@ function getToken() {
   return localStorage.getItem("token") || "";
 }
 
-async function req(url: string, path: string, method = "GET", body?: object) {
+async function req(url: string, path: string, method = "GET", body?: object, retries = 2): Promise<Record<string, unknown>> {
   const headers: Record<string, string> = {
     "Content-Type": "application/json",
     "X-Auth-Token": getToken(),
   };
-  const res = await fetch(`${url}${path}`, {
-    method,
-    headers,
-    body: body ? JSON.stringify(body) : undefined,
-  });
-  return res.json();
+  try {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 15000);
+    const res = await fetch(`${url}${path}`, {
+      method,
+      headers,
+      body: body ? JSON.stringify(body) : undefined,
+      signal: controller.signal,
+    });
+    clearTimeout(timeout);
+    return res.json();
+  } catch (e) {
+    if (retries > 0) {
+      await new Promise(r => setTimeout(r, 1000));
+      return req(url, path, method, body, retries - 1);
+    }
+    throw e;
+  }
 }
 
 export const api = {

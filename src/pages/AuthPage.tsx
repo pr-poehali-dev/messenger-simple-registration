@@ -26,13 +26,13 @@ export default function AuthPage({ onAuth }: Props) {
         ? await api.auth.login(username.trim(), password)
         : await api.auth.register(username.trim(), password);
       if (res.error) {
-        setError(res.error);
+        setError(res.error as string);
       } else {
-        saveSession(res.token, res.user_id, res.username);
+        saveSession(res.token as string, res.user_id as number, res.username as string);
         onAuth();
       }
     } catch {
-      setError("Ошибка соединения");
+      setError("Не удалось подключиться. Попробуйте ещё раз");
     } finally {
       setLoading(false);
     }
