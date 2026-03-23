@@ -3,7 +3,7 @@
     {
       "name": "List chats without auth",
       "method": "GET",
-      "path": "/",
+      "path": "/?action=list",
       "expectedStatus": 401,
       "expectedBody": {"error": "string"},
       "bodyMatcher": "partial"

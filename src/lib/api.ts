@@ -9,7 +9,7 @@ function getToken() {
   return localStorage.getItem("token") || "";
 }
 
-async function req(url: string, path: string, method = "GET", body?: object, retries = 2): Promise<Record<string, unknown>> {
+async function req(url: string, body: object, retries = 2): Promise<Record<string, unknown>> {
   const headers: Record<string, string> = {
     "Content-Type": "application/json",
     "X-Auth-Token": getToken(),
@@ -17,10 +17,10 @@ async function req(url: string, path: string, method = "GET", body?: object, ret
   try {
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), 15000);
-    const res = await fetch(`${url}${path}`, {
-      method,
+    const res = await fetch(url, {
+      method: "POST",
       headers,
-      body: body ? JSON.stringify(body) : undefined,
+      body: JSON.stringify(body),
       signal: controller.signal,
     });
     clearTimeout(timeout);
@@ -28,7 +28,7 @@ async function req(url: string, path: string, method = "GET", body?: object, ret
   } catch (e) {
     if (retries > 0) {
       await new Promise(r => setTimeout(r, 1000));
-      return req(url, path, method, body, retries - 1);
+      return req(url, body, retries - 1);
     }
     throw e;
   }
@@ -37,32 +37,33 @@ async function req(url: string, path: string, method = "GET", body?: object, ret
 export const api = {
   auth: {
     register: (username: string, password: string) =>
-      req(URLS.auth, "/register", "POST", { username, password }),
+      req(URLS.auth, { action: "register", username, password }),
     login: (username: string, password: string) =>
-      req(URLS.auth, "/login", "POST", { username, password }),
-    me: () => req(URLS.auth, "/me", "GET"),
+      req(URLS.auth, { action: "login", username, password }),
+    me: () =>
+      req(URLS.auth, { action: "me" }),
   },
   chats: {
-    list: () => req(URLS.chats, "/list", "GET"),
+    list: () => req(URLS.chats, { action: "list" }),
     create: (name: string, is_group: boolean, member_ids: number[]) =>
-      req(URLS.chats, "/create", "POST", { name, is_group, member_ids }),
+      req(URLS.chats, { action: "create", name, is_group, member_ids }),
     addMember: (chat_id: number, user_id: number) =>
-      req(URLS.chats, "/add-member", "POST", { chat_id, user_id }),
+      req(URLS.chats, { action: "add_member", chat_id, user_id }),
   },
   messages: {
     list: (chat_id: number) =>
-      req(URLS.messages, `/list?chat_id=${chat_id}`, "GET"),
+      req(URLS.messages, { action: "list", chat_id }),
     send: (chat_id: number, text: string) =>
-      req(URLS.messages, "/send", "POST", { chat_id, text }),
+      req(URLS.messages, { action: "send", chat_id, text }),
   },
   contacts: {
     all: (search = "") =>
-      req(URLS.contacts, `/all${search ? `?search=${encodeURIComponent(search)}` : ""}`, "GET"),
+      req(URLS.contacts, { action: "all", search }),
     list: (search = "") =>
-      req(URLS.contacts, `/list${search ? `?search=${encodeURIComponent(search)}` : ""}`, "GET"),
+      req(URLS.contacts, { action: "list", search }),
     add: (contact_id: number) =>
-      req(URLS.contacts, "/add", "POST", { contact_id }),
+      req(URLS.contacts, { action: "add", contact_id }),
     remove: (contact_id: number) =>
-      req(URLS.contacts, "/remove", "POST", { contact_id }),
+      req(URLS.contacts, { action: "remove", contact_id }),
   },
 };

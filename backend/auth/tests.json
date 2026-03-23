@@ -1,11 +1,12 @@
 {
   "tests": [
     {
-      "name": "Health check",
-      "method": "GET",
+      "name": "Register user",
+      "method": "POST",
       "path": "/",
-      "expectedStatus": 404,
-      "expectedBody": {"error": "string"},
+      "body": {"action": "register", "username": "testuser999", "password": "pass123"},
+      "expectedStatus": 200,
+      "expectedBody": {"token": "string"},
       "bodyMatcher": "partial"
     }
   ]
