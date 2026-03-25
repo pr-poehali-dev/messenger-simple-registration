@@ -37,7 +37,7 @@ export default function Index() {
       {/* Top bar */}
       <div className="flex items-center h-14 border-b border-border flex-shrink-0 bg-slate-50 rounded-none mx-0 py-0 px-[25px]">
         <div className="flex items-center gap-2.5 bg-[#ffffff]">
-          <div className="w-6 h-6 rounded-md bg-blue-800" />
+          <div className="w-6 h-6 bg-blue-800 rounded-fullhttps://cdn.poehali.dev/projects/f01a222d-f25b-4922-bae2-d756760449e1/bucket/93bc5ef0-0eb6-4335-a985-8a15a96c975c.jpg" />
           <span className="font-semibold tracking-tig text-slate-600">+8</span>
         </div>
         <div className="ml-auto text-xs text-muted-foreground rounded-md bg-lime-300">
