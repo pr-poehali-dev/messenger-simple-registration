@@ -23,7 +23,7 @@ export default function ProfilePage({ onLogout }: Props) {
 
       <div className="flex-1 p-5 space-y-4 bg-[#ffffff]">
         <div className="border border-border rounded-2xl p-6 flex flex-col items-center gap-4 animate-scale-in bg-neutral-300">
-          <div className="w-20 h-20 text-primary-foreground flex items-center justify-center text-3xl font-semibold rounded-full bg-red-400">
+          <div className="w-20 h-20 text-primary-foreground flex items-center justify-center text-3xl font-semibold bg-red-400 rounded-full">
             {initials}
           </div>
           <div className="text-center">
