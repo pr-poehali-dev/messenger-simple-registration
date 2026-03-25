@@ -254,14 +254,14 @@ export default function ChatsPage({ activeChatId, setActiveChatId }: ChatsPagePr
           ) : (
             <>
               {/* Chat header */}
-              <div className="px-4 py-3 border-b border-border bg-white flex items-center gap-3">
+              <div className="px-4 py-3 border-b border-border flex items-center gap-3 bg-stone-100 rounded-2xl">
                 <button
                   onClick={() => setActiveChatId(null)}
                   className="md:hidden text-muted-foreground hover:text-foreground transition-colors"
                 >
                   <Icon name="ArrowLeft" size={18} />
                 </button>
-                <div className="w-8 h-8 rounded-full bg-foreground text-primary-foreground flex items-center justify-center text-xs font-semibold flex-shrink-0">
+                <div className="w-8 h-8 rounded-full text-primary-foreground flex items-center justify-center text-xs font-semibold flex-shrink-0 bg-red-400">
                   {activeChat?.name[0]?.toUpperCase()}
                 </div>
                 <div className="flex-1 min-w-0">
@@ -276,7 +276,7 @@ export default function ChatsPage({ activeChatId, setActiveChatId }: ChatsPagePr
                 </div>
                 <div className="relative">
                   <Icon name="Search" size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
-                  <input
+                  <input className="pl-8 pr-3 py-1.5 border border-border focus:outline-none w-36 focus:w-48 transition-all rounded-full text-lg mx-[5px] bg-red-50 text-[#000000]"
                     type="text"
                     placeholder="Поиск..."
                     value={searchMsg}
@@ -287,7 +287,7 @@ export default function ChatsPage({ activeChatId, setActiveChatId }: ChatsPagePr
               </div>
 
               {/* Messages */}
-              <div className="flex-1 overflow-y-auto scrollbar-none p-4 space-y-4 bg-background">
+              <div className="flex-1 overflow-y-auto scrollbar-none p-4 space-y-4 bg-background my-0 mx-0 px-[22px] py-[15px] rounded-sm ">
                 {filteredMessages.length === 0 && !searchMsg && (
                   <div className="flex items-center justify-center h-full text-muted-foreground text-sm">
                     Напишите первое сообщение
