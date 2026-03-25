@@ -46,7 +46,7 @@ export default function ContactsPage() {
 
         <div className="relative mb-4">
           <Icon name="Search" size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
-          <input
+          <input className="w-full pl-9 pr-4 py-2.5 bg-secondary border border-border focus:outline-none focus:ring-2 focus:ring-foreground/10 transition-all text-xl rounded-2xl"
             type="text"
             placeholder={tab === "contacts" ? "Поиск по контактам..." : "Найти пользователя..."}
             value={search}
@@ -72,7 +72,7 @@ export default function ContactsPage() {
         </div>
       </div>
 
-      <div className="flex-1 overflow-y-auto scrollbar-none p-4 space-y-1">
+      <div className="flex-1 overflow-y-auto scrollbar-none p-4 space-y-1 bg-gray-300">
         {users.length === 0 && (
           <div className="flex flex-col items-center justify-center h-full gap-2 text-muted-foreground bg-gray-300">
             <Icon name="Users" size={36} className="opacity-20" />
@@ -85,20 +85,20 @@ export default function ContactsPage() {
         {users.map((u, i) => (
           <div
             key={u.id}
-            className="flex items-center gap-3 px-4 py-3 bg-white rounded-xl border border-border/50 animate-fade-in"
+            className="flex items-center gap-3 px-4 py-3 rounded-xl border border-border/50 animate-fade-in bg-orange-300"
             style={{ animationDelay: `${i * 0.03}s` }}
           >
-            <div className="w-10 h-10 rounded-full bg-foreground text-primary-foreground flex items-center justify-center text-sm font-semibold flex-shrink-0">
+            <div className="w-10 h-10 rounded-full text-primary-foreground flex items-center justify-center text-sm font-semibold flex-shrink-0 bg-red-400">
               {u.username[0].toUpperCase()}
             </div>
             <div className="flex-1 min-w-0">
-              <p className="text-sm font-medium truncate">{u.username}</p>
+              <p className="text-sm font-medium truncate text-stone-900">{u.username}</p>
               {tab === "all" && u.is_contact && (
                 <p className="text-xs text-muted-foreground">В контактах</p>
               )}
             </div>
             {tab === "all" && !u.is_contact && (
-              <button
+              <button className="flex items-center gap-1.5 px-3 py-1.5 bg-foreground text-primary-foreground font-medium hover:bg-foreground/90 disabled:opacity-50 transition-all rounded-0 text-sm"
                 onClick={() => addContact(u.id)}
                 disabled={loading === u.id}
                 className="flex items-center gap-1.5 px-3 py-1.5 bg-foreground text-primary-foreground text-xs font-medium rounded-lg hover:bg-foreground/90 disabled:opacity-50 transition-all"
