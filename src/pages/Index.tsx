@@ -35,12 +35,12 @@ export default function Index() {
   return (
     <div className="h-screen flex flex-col bg-background overflow-hidden">
       {/* Top bar */}
-      <div className="flex items-center px-4 h-14 border-b border-border flex-shrink-0 bg-slate-50">
-        <div className="flex items-center gap-2.5">
-          <div className="w-6 h-6 bg-foreground rounded-md" />
+      <div className="flex items-center h-14 border-b border-border flex-shrink-0 bg-slate-50 rounded-none mx-0 py-0 px-[25px]">
+        <div className="flex items-center gap-2.5 bg-[#ffffff]">
+          <div className="w-6 h-6 rounded-md bg-blue-800" />
           <span className="font-semibold tracking-tig text-slate-600">+8</span>
         </div>
-        <div className="ml-auto text-xs text-muted-foreground">
+        <div className="ml-auto text-xs text-muted-foreground rounded-md bg-lime-300">
           {session.username}
         </div>
       </div>
