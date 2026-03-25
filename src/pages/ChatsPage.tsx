@@ -194,8 +194,8 @@ export default function ChatsPage({ activeChatId, setActiveChatId }: ChatsPagePr
       <div className="flex h-full">
         {/* Sidebar */}
         <div className={`flex flex-col border-r border-border bg-white ${activeChatId ? "hidden md:flex w-72 flex-shrink-0" : "flex-1 md:w-72 md:flex-none"}`}>
-          <div className="p-4 border-b border-border flex items-center justify-between">
-            <h2 className="font-semibold text-base">Чаты</h2>
+          <div className="p-4 border-b border-border flex items-center justify-between bg-stone-50">
+            <h2 className="font-semibold text-base">ПИЗДЮКИ</h2>
             <button
               onClick={() => setShowCreate(true)}
               className="w-8 h-8 rounded-lg bg-foreground text-primary-foreground flex items-center justify-center hover:bg-foreground/90 transition-colors"
@@ -224,7 +224,7 @@ export default function ChatsPage({ activeChatId, setActiveChatId }: ChatsPagePr
                     isActive ? "bg-secondary" : "hover:bg-secondary/60"
                   }`}
                 >
-                  <div className="w-10 h-10 rounded-full bg-foreground text-primary-foreground flex items-center justify-center text-sm font-semibold flex-shrink-0">
+                  <div className="w-10 h-10 text-primary-foreground flex items-center justify-center text-sm font-semibold flex-shrink-0 bg-red-400 rounded-sm">
                     {initials}
                   </div>
                   <div className="min-w-0 flex-1">

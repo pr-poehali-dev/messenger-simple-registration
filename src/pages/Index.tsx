@@ -35,7 +35,7 @@ export default function Index() {
   return (
     <div className="h-screen flex flex-col bg-background overflow-hidden">
       {/* Top bar */}
-      <div className="flex items-center px-4 h-14 bg-white border-b border-border flex-shrink-0">
+      <div className="flex items-center px-4 h-14 border-b border-border flex-shrink-0 bg-stone-400">
         <div className="flex items-center gap-2.5">
           <div className="w-6 h-6 bg-foreground rounded-md" />
           <span className="font-semibold tracking-tig text-slate-600">+8</span>
