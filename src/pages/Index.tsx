@@ -38,7 +38,7 @@ export default function Index() {
       <div className="flex items-center px-4 h-14 bg-white border-b border-border flex-shrink-0">
         <div className="flex items-center gap-2.5">
           <div className="w-6 h-6 bg-foreground rounded-md" />
-          <span className="font-semibold text-base tracking-tight">Вестник</span>
+          <span className="font-semibold tracking-tig text-slate-600">+8</span>
         </div>
         <div className="ml-auto text-xs text-muted-foreground">
           {session.username}
