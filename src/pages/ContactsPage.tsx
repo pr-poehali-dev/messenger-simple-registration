@@ -98,7 +98,7 @@ export default function ContactsPage() {
               )}
             </div>
             {tab === "all" && !u.is_contact && (
-              <button className="flex items-center gap-1.5 px-3 py-1.5 bg-foreground text-primary-foreground font-medium hover:bg-foreground/90 disabled:opacity-50 transition-all rounded-0 text-sm"
+              <button className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg hover:bg-foreground/90 disabled:opacity-50 transition-all bg-slate-300 text-[#000000]"
                 onClick={() => addContact(u.id)}
                 disabled={loading === u.id}
                 className="flex items-center gap-1.5 px-3 py-1.5 bg-foreground text-primary-foreground text-xs font-medium rounded-lg hover:bg-foreground/90 disabled:opacity-50 transition-all"
