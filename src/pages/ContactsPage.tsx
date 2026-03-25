@@ -74,7 +74,7 @@ export default function ContactsPage() {
 
       <div className="flex-1 overflow-y-auto scrollbar-none p-4 space-y-1">
         {users.length === 0 && (
-          <div className="flex flex-col items-center justify-center h-full gap-2 text-muted-foreground bg-gray-400">
+          <div className="flex flex-col items-center justify-center h-full gap-2 text-muted-foreground bg-gray-300">
             <Icon name="Users" size={36} className="opacity-20" />
             <p className="text-sm">
               {tab === "contacts" ? "Нет контактов — найдите людей во вкладке «Все»" : "Никого не найдено"}
