@@ -224,7 +224,7 @@ export default function ChatsPage({ activeChatId, setActiveChatId }: ChatsPagePr
                     isActive ? "bg-secondary" : "hover:bg-secondary/60"
                   }`}
                 >
-                  <div className="w-10 h-10 text-primary-foreground flex items-center justify-center text-sm font-semibold flex-shrink-0 bg-red-400 rounded-sm">
+                  <div className="w-10 h-10 text-primary-foreground flex items-center justify-center text-sm font-semibold flex-shrink-0 bg-red-400 rounded-full">
                     {initials}
                   </div>
                   <div className="min-w-0 flex-1">
