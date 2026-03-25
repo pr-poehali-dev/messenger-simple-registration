@@ -42,7 +42,7 @@ export default function ContactsPage() {
   return (
     <div className="flex flex-col h-full bg-background">
       <div className="bg-white border-b border-border px-5 pt-5 pb-0">
-        <h2 className="font-semibold text-base mb-4">У ТЕБЯ ЖЕ НЕТ ДРУЗЕЙ ДАУН!!!!!</h2>
+        <h2 className="font-semibold text-base mb-4 text-left">У ТЕБЯ ЖЕ НЕТ ДРУЗЕЙ ДАУН!!!!!</h2>
 
         <div className="relative mb-4">
           <Icon name="Search" size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
