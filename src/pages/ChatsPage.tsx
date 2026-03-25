@@ -203,7 +203,7 @@ export default function ChatsPage({ activeChatId, setActiveChatId }: ChatsPagePr
               <Icon name="Plus" size={16} />
             </button>
           </div>
-          <div className="flex-1 overflow-y-auto scrollbar-none">
+          <div className="flex-1 overflow-y-auto scrollbar-none rounded-3xl bg-slate-200">
             {chats.length === 0 && (
               <div className="flex flex-col items-center justify-center h-full gap-2 text-muted-foreground px-6 text-center">
                 <Icon name="MessageSquare" size={32} className="opacity-30" />
